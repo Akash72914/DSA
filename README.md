@@ -1,4 +1,4 @@
-# 🧠 Daily DSA Practice
+# 🧠 DSA - Data Structures and Algorithms
 
 Welcome to my **Daily DSA Practice Repository**!  
 This repository contains all the **Data Structures and Algorithms** problems I solve every day while improving my problem-solving and coding skills.
