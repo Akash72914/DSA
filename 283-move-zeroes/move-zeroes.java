@@ -1,22 +1,26 @@
 class Solution {
     public void moveZeroes(int[] nums) {
         int n = nums.length;
-        List<Integer> temp = new ArrayList<>();
+        int j = -1;
 
         for(int i=0; i<n; i++) {
-            if(nums[i] != 0) {
-                temp.add(nums[i]);
+            if(nums[i] == 0) {
+                j = i;
+                break;
             }
         }
 
-        int nz = temp.size();
-
-        for(int i=0; i<nz; i++) {
-            nums[i] = temp.get(i);
+        if(j == -1) {
+            return;     //no zero found
         }
 
-        for(int i=nz; i<n; i++) {
-            nums[i] = 0;
+        for(int i=j+1; i<n; i++) {
+            if(nums[i] != 0) {
+                int temp = nums[j];
+                nums[j] = nums[i];
+                nums[i] = temp;
+                j++;
+            }
         }
     }
 }
