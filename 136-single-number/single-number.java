@@ -4,7 +4,7 @@ class Solution {
         int result = 0;
 
         for(int i=0; i<n; i++) {
-           result = result ^ nums[i];
+           result = result ^ nums[i];   //xor operation
         }
         return result;
     }
