@@ -20,8 +20,9 @@ class Solution {
             result[k++] = neg[j++];
         }
 
-        // Add remaining ones
+        // Add remaining positives
         while (i < p) result[k++] = pos[i++];
+        // Add remaining negatives
         while (j < ne) result[k++] = neg[j++];
 
         return result;
