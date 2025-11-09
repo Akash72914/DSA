@@ -2,21 +2,16 @@ class Solution {
     public int[] rearrangeArray(int[] nums) {
         int n = nums.length;
         int[] result = new int[n];
-        int i = 0, j = 0, k = 0;
+        int pos = 0; // even index for positive numbers
+        int neg = 1; // odd index for negative numbers
 
-        // First pass: place positives at even indices
-        for (int p = 0; p < n; p++) {
-            if (nums[p] > 0) {
-                result[i] = nums[p];
-                i += 2; // even index
-            }
-        }
-
-        // Second pass: place negatives at odd indices
-        for (int ne = 0; ne < n; ne++) {
-            if (nums[ne] < 0) {
-                result[j + 1] = nums[ne];
-                j += 2; // odd index
+        for (int num : nums) {
+            if (num > 0) {
+                result[pos] = num;
+                pos += 2;
+            } else {
+                result[neg] = num;
+                neg += 2;
             }
         }
 
