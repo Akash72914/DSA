@@ -5,24 +5,22 @@ class Solution {
 
         List<int[]> res = new ArrayList<>();
 
+        int start = intervals[0][0];
+        int end = intervals[0][1];
+
         for(int i = 0; i < n; i++) {
-            int start = intervals[i][0];
-            int end = intervals[i][1];
-
-            if(!res.isEmpty() && end <= res.get(res.size() - 1)[1]) {
-                continue;
+            //Overlap case
+            if (intervals[i][0] <= end) {
+                end = Math.max(end, intervals[i][1]);
             }
-
-            for(int j = i + 1; j < n; j++) {
-                if(intervals[j][0] <= end) {
-                    end = Math.max(end, intervals[j][1]);
-                } else {
-                    break;
-                }
+            //Non-overlapping interval → push previous and reset
+            else {
+                res.add(new int[]{start, end});
+                start = intervals[i][0];
+                end = intervals[i][1];
             }
-
-            res.add(new int[]{start, end});
         }
+        res.add(new int[]{start, end});
 
         return res.toArray(new int[res.size()][]);
     }
