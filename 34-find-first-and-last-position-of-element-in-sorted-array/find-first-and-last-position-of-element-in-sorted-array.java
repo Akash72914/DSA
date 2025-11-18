@@ -48,6 +48,11 @@ class Solution {
         int n = nums.length;
 
         int first = firstOccurance(nums, n, target);
+
+        if(first == -1) {
+            return new int[]{-1, -1};
+        }
+
         int last = lastOccurance(nums, n, target);
 
         return new int[]{first, last};
