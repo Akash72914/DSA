@@ -1,14 +1,14 @@
 class Solution {
-    private int lowerBound(int[] nums, int n, int target) {
+    private int firstOccurance(int[] nums, int n, int target) {
         int left = 0;
         int right = n - 1;
-        int ans = -1;
+        int first = -1;
 
         while(left <= right) {
             int mid = left + (right - left) / 2;
 
             if(nums[mid] == target) {
-                ans = mid;
+                first = mid;
                 right = mid - 1;
             } 
             else if(nums[mid] < target) {
@@ -18,19 +18,19 @@ class Solution {
                 right = mid - 1;
             }
         }
-        return ans;
+        return first;
     }
 
-    private int upperBound(int[] nums, int n, int target) {
+    private int lastOccurance(int[] nums, int n, int target) {
         int left = 0;
         int right = n - 1;
-        int ans = -1;
+        int last = -1;
 
         while(left <= right) {
             int mid = left + (right - left) / 2;
 
             if(nums[mid] == target) {
-                ans = mid;
+                last = mid;
                 left = mid + 1;
             } 
             else if(nums[mid] < target) {
@@ -41,15 +41,15 @@ class Solution {
             }
         }
 
-        return ans;
+        return last;
     }
 
     public int[] searchRange(int[] nums, int target) {
         int n = nums.length;
 
-        int lb = lowerBound(nums, n, target);
-        int ub = upperBound(nums, n, target);
+        int first = firstOccurance(nums, n, target);
+        int last = lastOccurance(nums, n, target);
 
-        return new int[]{lb, ub};
+        return new int[]{first, last};
     }
 }
