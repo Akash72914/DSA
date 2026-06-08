@@ -57,3 +57,6 @@ class Solution {
         return sign * num;
     }
 }
+
+// TC : O(n)
+// SC : O(1)
