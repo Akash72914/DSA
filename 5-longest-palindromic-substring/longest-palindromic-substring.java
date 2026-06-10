@@ -2,40 +2,40 @@ class Solution {
 
     public String longestPalindrome(String s) {
 
-        String ans = "";
+        if (s == null || s.length() < 2) {
+            return s;
+        }
+
+        int start = 0;
+        int end = 0;
 
         for (int i = 0; i < s.length(); i++) {
 
-            for (int j = i; j < s.length(); j++) {
+            int len1 = expand(s, i, i);       // odd
+            int len2 = expand(s, i, i + 1);   // even
 
-                String sub = s.substring(i, j + 1);
+            int len = Math.max(len1, len2);
 
-                if (isPalindrome(sub) &&
-                    sub.length() > ans.length()) {
+            if (len > end - start + 1) {
 
-                    ans = sub;
-                }
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
             }
         }
 
-        return ans;
+        return s.substring(start, end + 1);
     }
 
-    private boolean isPalindrome(String str) {
+    private int expand(String s, int left, int right) {
 
-        int left = 0;
-        int right = str.length() - 1;
+        while (left >= 0 &&
+               right < s.length() &&
+               s.charAt(left) == s.charAt(right)) {
 
-        while (left < right) {
-
-            if (str.charAt(left) != str.charAt(right)) {
-                return false;
-            }
-
-            left++;
-            right--;
+            left--;
+            right++;
         }
 
-        return true;
+        return right - left - 1;
     }
 }
