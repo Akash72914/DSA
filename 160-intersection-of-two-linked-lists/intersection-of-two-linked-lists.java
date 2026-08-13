@@ -17,10 +17,13 @@ public class Solution {
         while(temp1 != temp2) {
             if(temp1 == null) {
                 temp1 = headB;
-            } else if(temp2 == null) {
-                temp2 = headA;
             } else {
                 temp1 = temp1.next;
+            }
+            
+            if(temp2 == null) {
+                temp2 = headA;
+            } else {
                 temp2 = temp2.next;
             }
         }
